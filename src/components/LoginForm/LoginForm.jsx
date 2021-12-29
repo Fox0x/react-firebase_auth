@@ -5,10 +5,10 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import classNames from "classnames";
 import ErrorMessages from "../UI/ErrorMessages/ErrorMessages";
+import {signup} from "../../firebase"
 
 export default function LoginForm() {
 	const [errorMessages, setErrorMessages] = React.useState(null);
-
 	const [isFlipping, setIsFlipping] = React.useState(false);
 	const formClasses = classNames(css.form, {
 		[css.flip_shade]: isFlipping,
@@ -30,6 +30,7 @@ export default function LoginForm() {
 		onSubmit: (values) => {
 			setIsFlipping(!isFlipping);
 			setTimeout(() => navigate("/auth/register"), 500);
+			signup(values.email, values.password)
 		},
 	});
 	let arr = [];
