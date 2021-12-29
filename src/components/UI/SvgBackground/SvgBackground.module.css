@@ -1,0 +1,17 @@
+.svgBackground {
+	position: fixed;
+	transform: scale(15) translateY(30%);
+}
+
+stop:first-child {
+	animation: fadeIn .7s ease-in-out;
+}
+
+@keyframes fadeIn {
+	0% {
+		stop-opacity: 0%;
+	}
+	100% {
+		stop-opacity: 100%;
+	}
+}

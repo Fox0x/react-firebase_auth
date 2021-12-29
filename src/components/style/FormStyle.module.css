@@ -1,0 +1,142 @@
+.form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	width: 80%;
+}
+
+.form__title {
+	color: #dbdfea;
+	margin-top: 2rem;
+}
+
+.input__container {
+	width: 60%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+/* === input style === */
+
+.input {
+	border: none;
+	border-bottom: solid 2px #dbdfea;
+	border-left: 0; /*for error input transition*/
+	border-radius: 10px 10px 0 0px;
+	background-color: transparent;
+	color: #dbdfea;
+	font-size: 1.2rem;
+	font-weight: 100;
+	width: 100%;
+	padding: 0.5rem;
+	margin-bottom: 1.5rem;
+	transition: all 0.2s ease-in-out;
+}
+
+.input:focus {
+	outline: none;
+	background-color: rgba(255, 255, 255, 0.05);
+	border-left: 2px solid #dbdfea;
+}
+
+.input::-webkit-input-placeholder {
+	color: #dbdfea;
+	opacity: 1;
+}
+
+.input::-moz-placeholder {
+	color: #dbdfea;
+	opacity: 1;
+}
+
+.input:-ms-input-placeholder {
+	color: #dbdfea;
+	opacity: 1;
+}
+
+.input::-ms-input-placeholder {
+	color: #dbdfea;
+	opacity: 1;
+}
+
+.input::placeholder {
+	color: #dbdfea;
+	opacity: 1;
+}
+
+/* Disabling autofill styles */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	transition: background-color 9999s ease-in-out 0s,
+		color 9999s ease-in-out 0s;
+}
+
+/* === end of input style === */
+
+/* === button style === */
+
+.form__button {
+	border: solid 2px #dbdfea;
+	border-radius: 20px;
+	color: #dbdfea;
+	background-color: rgba(255, 255, 255, 0.05);
+	font-weight: 400;
+	font-size: 1.2rem;
+	padding: 0.5rem 1rem;
+	transition: all 0.2s ease-in-out;
+	text-decoration: none;
+}
+
+.form__button:hover {
+	background-color: #dbdfea;
+	color: #1d1e2c;
+}
+
+.form__button:disabled {
+	opacity: 0.2;
+	color: #dbdfea;
+}
+
+.form__button:disabled:hover {
+	color: #dbdfea;
+	background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* === end of button style === */
+
+.form__subtitle {
+	color: #dbdfea;
+	margin: 2rem 0;
+	cursor: pointer;
+}
+
+.error {
+	color: #e03a45;
+}
+
+.flip_shade {
+animation:  shade 0.5s ease-in-out;
+
+}
+
+@keyframes flip {
+	0% {
+		transform: rotateY(0deg);
+	}
+	100% {
+		transform: rotateY(180deg);
+	}
+}
+@keyframes shade {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}

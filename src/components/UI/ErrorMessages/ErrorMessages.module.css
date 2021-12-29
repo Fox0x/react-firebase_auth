@@ -1,0 +1,33 @@
+.error__wrapper {
+	position: fixed;
+	top: 1rem;
+	right: 1rem;
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: flex-end;
+	transform: translate(0%, 0%);
+}
+
+.error__message {
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	justify-content: center;
+	padding: 1rem;
+	margin-bottom: 1rem;
+	border: solid 2px rgba(219, 223, 234, 0.2);
+	border-radius: 10px 0 10px 0;
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(7px);
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+	width: fit-content;
+	height: fit-content;
+	color: #dbdfea;
+	transition: all 1s linear;
+}
+
+.error__img {
+	width: 1.5rem;
+	height: 1.5rem;
+	margin-right: 1rem;
+}
