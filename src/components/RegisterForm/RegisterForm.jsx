@@ -16,7 +16,6 @@ export default function RegisterForm() {
 	const formik = useFormik({
 		initialValues: {
 			email: "",
-			phone: "",
 			password: "",
 			passwordConfirm: "",
 		},
@@ -24,9 +23,6 @@ export default function RegisterForm() {
 			email: Yup.string()
 				.email("Invalid email address")
 				.required("Email is required"),
-			phone: Yup.string()
-				.matches(/^\d{10}$/, "Phone number must be 10 digits")
-				.required("Phone number is required"),
 			password: Yup.string()
 				.min(8, "Password must be at least 8 characters")
 				.required("Password is required"),
@@ -44,8 +40,6 @@ export default function RegisterForm() {
 	useEffect(() => {
 		if (formik.errors.email && formik.touched.email)
 			arr.push(formik.errors.email);
-		if (formik.errors.phone && formik.touched.phone)
-			arr.push(formik.errors.phone);
 		if (formik.errors.password && formik.touched.password)
 			arr.push(formik.errors.password);
 		if (formik.errors.passwordConfirm && formik.touched.passwordConfirm)
@@ -72,23 +66,6 @@ export default function RegisterForm() {
 					style={
 						formik.errors.email &&
 						formik.touched.email && {
-							borderLeft: "solid 10px #E03A45",
-							borderBottomColor: "#E03A45",
-						}
-					}
-				/>
-
-				<input
-					className={css.input}
-					placeholder="Phone"
-					type="tel"
-					name="phone"
-					value={formik.values.phone}
-					onChange={formik.handleChange}
-					onBlur={formik.handleBlur}
-					style={
-						formik.errors.phone &&
-						formik.touched.phone && {
 							borderLeft: "solid 10px #E03A45",
 							borderBottomColor: "#E03A45",
 						}
