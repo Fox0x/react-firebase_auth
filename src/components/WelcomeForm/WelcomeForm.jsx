@@ -5,6 +5,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import classNames from "classnames";
 import ErrorMessages from "../UI/ErrorMessages/ErrorMessages";
+import { userExist } from "../../firebase";
 
 export default function WelcomeForm() {
 	const [errorMessages, setErrorMessages] = React.useState(null);
@@ -23,8 +24,7 @@ export default function WelcomeForm() {
 				.required("Email is required"),
 		}),
 		onSubmit: (values) => {
-			setIsFlipping(!isFlipping);
-			setTimeout(() => navigate("/auth/login"), 500);
+			signupHandler(values);
 		},
 	});
 	let arr = [];
@@ -39,6 +39,22 @@ export default function WelcomeForm() {
 		arr.length > 0 ? setErrorMessages(arr) : setErrorMessages(null);
 	}, [formik.errors, formik.touched]);
 
+	const signupHandler = async (values) => {
+		try {
+			userExist(values.email).then((res) => {
+				if (res.length) {
+					setIsFlipping(!isFlipping);
+					setTimeout(() => navigate("/auth/login"), 500);
+				} else {
+					setIsFlipping(!isFlipping);
+					setTimeout(() => navigate("/auth/register"), 500);
+				}
+			});
+		} catch (error) {
+			arr.push(error.code);
+			setErrorMessages(arr);
+		}
+	};
 	return (
 		<form className={formClasses} onSubmit={formik.handleSubmit}>
 			<ErrorMessages errors={errorMessages} />

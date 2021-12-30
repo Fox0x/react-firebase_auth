@@ -34,13 +34,6 @@ export default function AuthPage({ wrappedComponent }) {
 				{wrappedComponent}
 			</div>
 			<SvgBackground color={color} />
-			<div className={css.auth__skip}>
-				<span>
-					This is just a test sample, so you can{" "}
-					<Link style={{color: "#dbdfea"}} to="/dash">skip the authentication step</Link>
-					{" "}and go to the main menu.
-				</span>
-			</div>
 		</div>
 	);
 }

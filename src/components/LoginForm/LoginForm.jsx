@@ -5,7 +5,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import classNames from "classnames";
 import ErrorMessages from "../UI/ErrorMessages/ErrorMessages";
-import {signup} from "../../firebase"
+import { signin } from "../../firebase";
 
 export default function LoginForm() {
 	const [errorMessages, setErrorMessages] = React.useState(null);
@@ -28,9 +28,7 @@ export default function LoginForm() {
 				.required("Password is required"),
 		}),
 		onSubmit: (values) => {
-			setIsFlipping(!isFlipping);
-			setTimeout(() => navigate("/auth/register"), 500);
-			signup(values.email, values.password)
+			signinHandler(values);
 		},
 	});
 	let arr = [];
@@ -44,6 +42,19 @@ export default function LoginForm() {
 		}
 		arr.length > 0 ? setErrorMessages(arr) : setErrorMessages(null);
 	}, [formik.errors, formik.touched]);
+
+	const signinHandler = async (values) => {
+		try {
+			await signin(values.email, values.password).then(() => {
+				setIsFlipping(!isFlipping);
+				document.location.href =
+					"https://admindashboard-golub.herokuapp.com/";
+			});
+		} catch (error) {
+			arr.push(error.code);
+			setErrorMessages(arr);
+		}
+	};
 	return (
 		<form className={formClasses} onSubmit={formik.handleSubmit}>
 			<ErrorMessages errors={errorMessages} />

@@ -120,8 +120,7 @@ input:-webkit-autofill:active {
 }
 
 .flip_shade {
-animation:  shade 0.5s ease-in-out;
-
+	animation: shade 0.5s ease-in-out;
 }
 
 @keyframes flip {
